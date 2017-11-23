@@ -17,50 +17,50 @@ extension NSDecimalNumber {
 
 
 public func -(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-    return lhs.decimalNumberBySubtracting(rhs)
+    return lhs.subtracting(rhs)
 }
 
 
 public func +(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-    return lhs.decimalNumberByAdding(rhs)
+    return lhs.adding(rhs)
 }
 
 public func *(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-    return lhs.decimalNumberByMultiplyingBy(rhs)
+    return lhs.multiplying(by: rhs)
 }
 
 public func /(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
-    return lhs.decimalNumberByDividingBy(rhs)
+    return lhs.dividing(by: rhs)
 }
 
 public func ==(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-    return lhs.compare(rhs) == .OrderedSame
+    return lhs.compare(rhs) == .orderedSame
 }
 
 public func <(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-    return lhs.compare(rhs) == .OrderedAscending
+    return lhs.compare(rhs) == .orderedAscending
 }
 
 public func >(lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
-    return lhs.compare(rhs) == .OrderedDescending
+    return lhs.compare(rhs) == .orderedDescending
 }
 
 public func ^(lhs: NSDecimalNumber, rhs: Int) -> NSDecimalNumber {
-    return lhs.decimalNumberByRaisingToPower(rhs)
+    return lhs.raising(toPower: rhs)
 }
 
-public func +=(inout lhs: NSDecimalNumber, rhs: NSDecimalNumber) {
+public func +=(lhs: inout NSDecimalNumber, rhs: NSDecimalNumber) {
     lhs = lhs + rhs
 }
 
-public func /=(inout lhs: NSDecimalNumber, rhs: NSDecimalNumber)  {
+public func /=(lhs: inout NSDecimalNumber, rhs: NSDecimalNumber)  {
     lhs = lhs / rhs
 }
 
-public func *=(inout lhs: NSDecimalNumber, rhs: NSDecimalNumber) {
+public func *=(lhs: inout NSDecimalNumber, rhs: NSDecimalNumber) {
     lhs = lhs * rhs
 }
 
-public func -=(inout lhs: NSDecimalNumber, rhs: NSDecimalNumber) {
+public func -=(lhs: inout NSDecimalNumber, rhs: NSDecimalNumber) {
     lhs = lhs - rhs
 }

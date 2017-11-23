@@ -11,35 +11,39 @@ import UIKit
 extension String {
     
     func trimWhiteSpace() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
-    
-    func trimCharactersFromFront(characters: [Character]) -> String {
+
+    func trimNewLines() -> String {
+        return self.trimmingCharacters(in: .newlines)
+    }
+
+
+    func trimCharactersFromFront(_ characters: [Character]) -> String {
         var startingIndex: Index = self.startIndex
         for letter in self.characters {
             if characters.contains(letter) {
-                startingIndex = startingIndex.advancedBy(1)
+                startingIndex = self.index(startingIndex, offsetBy: 1)
             }
             else {
                 break;
             }
         }
-        return self.substringFromIndex(startingIndex)
+        return self.substring(from: startingIndex)
     }
-    
-    
-    func trimCharactersFromEnd(characters: [Character]) -> String {
+
+
+    func trimCharactersFromEnd(_ characters: [Character]) -> String {
         var endingIndex: Index = self.endIndex
-        for letter in self.characters.reverse() {
+        for letter in self.characters.reversed() {
             if characters.contains(letter) {
-                endingIndex = endingIndex.advancedBy(-1)
+                endingIndex = self.index(endingIndex, offsetBy: -1)
             }
             else {
                 break;
             }
         }
-        return self.substringToIndex(endingIndex)
+        return self.substring(to: endingIndex)
     }
     
 }

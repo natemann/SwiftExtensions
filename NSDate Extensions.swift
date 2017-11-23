@@ -9,74 +9,75 @@
 import Foundation
 
 
-extension NSDate {
+extension Date {
     
-    private var components: NSDateComponents {
-        return NSCalendar.currentCalendar().components([.Era, .Year, .Month, .Weekday, .Day, .Hour, .Minute, .Second, .TimeZone], fromDate: self)
+    fileprivate var components: DateComponents {
+        return (Calendar.current as NSCalendar).components([.era, .year, .month, .weekday, .day, .hour, .minute, .second, .timeZone], from: self)
     }
     
     var era: Int {
-        return components.era
+        return components.era!
     }
     
     var year: Int {
-        return components.year
+        return components.year!
     }
     
     var month: Int {
-        return components.month
+        return components.month!
     }
     
     var weekday: Int {
-        return components.weekday
+        return components.weekday!
     }
     
     var day: Int {
-        return components.day
+        return components.day!
     }
     
     var hour: Int {
-        return components.hour
+        return components.hour!
     }
     
     var minute: Int {
-        return components.minute
+        return components.minute!
     }
     
     var second: Int {
-        return components.minute
+        return components.minute!
     }
     
     var weekOfYear: Int {
-        return components.weekOfYear
+        return components.weekOfYear!
     }
     
     var weekOfMonth: Int {
-        return components.weekOfMonth
+        return components.weekOfMonth!
     }
     
-    var timeZone: NSTimeZone {
-        return components.timeZone!
-    }
-    
-    
-    class func monthsBetween(date1 date1: NSDate, date2: NSDate) -> Int {
-        return NSCalendar.currentCalendar().components(.Month, fromDate: date1, toDate: date2, options: NSCalendarOptions(rawValue: 0)).month
+    var timeZone: TimeZone {
+        return (components as NSDateComponents).timeZone!
     }
     
     
-    class func dateFromString(string: String, withDateFormat: String) -> NSDate? {
-        return NSDateFormatter(dateFormat: withDateFormat).dateFromString(string)
+    static func monthsBetween(date1: Date, date2: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(.month, from: date1, to: date2, options: NSCalendar.Options(rawValue: 0)).month!
     }
     
     
-    func toString(dateFormat dateFormat: String) -> String {
-        return NSDateFormatter(dateFormat: dateFormat).stringFromDate(self)
+    static func dateFromString(_ string: String, withDateFormat: String) -> Date? {
+        
+        return DateFormatter(dateFormat: withDateFormat).date(from: string)
     }
     
     
-    func toString(dateStyle dateStyle: NSDateFormatterStyle) -> String {
-        return NSDateFormatter(dateStyle: dateStyle).stringFromDate(self)
+    func toString(dateFormat: String) -> String {
+        return DateFormatter(dateFormat: dateFormat).string(from: self)
+    }
+    
+    
+    func toString(dateStyle: DateFormatter.Style) -> String {
+        return DateFormatter(dateStyle: dateStyle).string(from: self)
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSDateFormatter {
+extension DateFormatter {
     
     convenience init(dateFormat: String) {
         self.init()
@@ -16,7 +16,7 @@ extension NSDateFormatter {
     }
     
     
-    convenience init(dateStyle: NSDateFormatterStyle) {
+    convenience init(dateStyle: DateFormatter.Style) {
         self.init()
         self.dateStyle = dateStyle
     }

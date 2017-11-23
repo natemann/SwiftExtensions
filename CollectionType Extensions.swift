@@ -9,8 +9,8 @@
 import Foundation
 
 
-extension CollectionType where Index: Comparable {
-    subscript (maybe index: Index) -> Generator.Element? {
+extension Collection where Index: Comparable {
+    subscript (maybe index: Index) -> Iterator.Element? {
         guard startIndex <= index && index < endIndex else {
             return nil
         }

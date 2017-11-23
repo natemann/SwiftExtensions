@@ -30,4 +30,12 @@ extension UILabel {
         }
     }
     
+
+    convenience init(font: UIFont, numberOfLines: Int = 0, lineBreakMode: NSLineBreakMode = .byWordWrapping) {
+        self.init()
+        self.font = font
+        self.numberOfLines = numberOfLines
+        self.lineBreakMode = lineBreakMode
+    }
+    
 }

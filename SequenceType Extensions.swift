@@ -9,10 +9,10 @@
 import Foundation
 
 
-extension SequenceType where Generator.Element : Hashable {
+extension Sequence where Iterator.Element : Hashable {
     
-    func unique() -> [Generator.Element] {
-        var set: Set<Generator.Element> = []
+    func unique() -> [Iterator.Element] {
+        var set: Set<Iterator.Element> = []
         return self.filter {
             if set.contains($0) {
                 return false
